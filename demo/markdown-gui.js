@@ -58,7 +58,7 @@ var lastText,lastOutput,lastRoomLeft;
 var convertTextSetting, convertTextButton, paneSetting;
 var inputPane,previewPane,outputPane,syntaxPane;
 var maxDelay = 3000; // longest update pause (in ms)
-
+var dialects = markdown.Markdown.dialects.Gruber;
 
 //
 //	Initialization
@@ -99,7 +99,7 @@ function startGui() {
 			pollingFallback = undefined;
 		}
 		onInput();
-	}
+	};
 
 	// Try registering for input events (the best solution)
 	if (inputPane.addEventListener) {
@@ -154,7 +154,7 @@ function convertText() {
 	var startTime = new Date().getTime();
 
 	// Do the conversion
-	text = markdown.toHTML(text, markdown.Markdown.dialects.Maruku); //converter.makeHtml(text);
+	text = markdown.toHTML(text, dialects, {base_uri:base_uri}); //converter.makeHtml(text);
 
 	// display processing time
 	var endTime = new Date().getTime();	
@@ -175,17 +175,17 @@ function convertText() {
 
 	lastOutput = text;
   
-  // Highlight syntax
+  /*/ Highlight syntax
   selected_languages = LANGUAGES;
   var pres = document.getElementsByTagName('pre');
   for (var i = 0; i < pres.length; i++) {
     if (pres[i].firstChild && pres[i].firstChild.nodeName == 'CODE')
       initHighlight(pres[i].firstChild);
-  }//for
+  }//for*/
 
 	// restore proportional scroll positions
 	restoreScrollPositions();
-};
+}
 
 
 //

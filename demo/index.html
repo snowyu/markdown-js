@@ -6,8 +6,11 @@
 	
 	<title>Markdown.js - Markdown in Javascript</title>
     <script type="text/javascript" src="../lib/markdown.js"></script>
-  	<script type="text/javascript" src="../lib/markdown-rails.js"></script>
-	<script type="text/javascript" src="markdown-gui.js"></script>
+    <script type="text/javascript" src="markdown-gui.js"></script>
+    <script type="text/javascript">
+        dialects = markdown.Markdown.dialects.Maruku;
+        base_uri = 'wiki/';
+    </script>
   
   
 <link rel="stylesheet" type="text/css" href="index.css" media="all">
@@ -26,6 +29,7 @@
 		<textarea id="inputPane" cols="80" rows="20" class="pane">Using this tool
 ---------------
 
+[Another] (readme.md)
 This page lets you create HTML by entering text in a simple format that's easy to read and write.
 
   - Type Markdown text in the left window
