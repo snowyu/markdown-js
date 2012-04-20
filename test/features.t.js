@@ -1,4 +1,4 @@
-var markdown = require('markdown')
+var markdown = require('markdown');
 
 function test_dialect( dialect, features ) {
   var dialect_test = exports[ "test_" + dialect ] = {};
@@ -12,10 +12,10 @@ function test_dialect( dialect, features ) {
         var tests = fs.list( test_path );
 
         // filter to only the raw files
-        tests = tests.filter( function( x ) {return x.match( /\.text$/ ) } );
+        tests = tests.filter( function( x ) {return x.match( /\.text$/ ); } );
 
         // remove the extensions
-        tests = tests.map( function( x ) {return x.replace( /\.text$/, "" ) } );
+        tests = tests.map( function( x ) {return x.replace( /\.text$/, "" ); } );
 
         for ( var t in tests ) {
           // load the raw text
@@ -28,11 +28,12 @@ function test_dialect( dialect, features ) {
               var json_text = slurpFile( test_path + tests[ t ] + ".json" );
               var json = JSON.parse( json_text );
 
-              var output = markdown.toHTMLTree( text, dialect );
+              var output = markdown.toHTMLTree( text, dialect, {base_uri: 'wiki/'});
               asserts.same( output, json, test_name );
             }
             catch( e ) {
-              asserts.ok( 0, "Failed with error on " + test_name + ": " + e );
+              console.log("the render result:"+markdown.renderJsonML(output));
+              asserts.ok( 0, "\nFailed with error on " + test_name + ".text\n" + e );
               if ( e.stack )
                 asserts.diag( e.stack );
             }
@@ -41,7 +42,7 @@ function test_dialect( dialect, features ) {
             asserts.ok( 0, "No target output for " + test_name );
           }
         }
-      }
+      };
     } )( features[ f ] );
   }
 }
@@ -60,14 +61,14 @@ if ( typeof process != "undefined" && process.title == "node" ) {
 
   var slurpFile = function( f ) {
     return n_fs.readFileSync( f, 'utf8' );
-  }
+  };
 
   var fs = {
     list: n_fs.readdirSync,
     rawOpen: n_fs.openSync,
     isFile: function( f ) {
-      return n_fs.statSync( f ).isFile()
-    },
+      return n_fs.statSync( f ).isFile();
+    }
   };
 
   asserts.same = asserts.deepEqual;
@@ -85,7 +86,7 @@ else {
     var t = s.readWhole();
     s.close();
     return t;
-  }
+  };
 }
 
 
