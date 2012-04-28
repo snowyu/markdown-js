@@ -1,0 +1,14 @@
+["html",
+  ["p",
+    "A ",
+    ["a",
+      { "href" : "http://reference.com#param" },
+      "link using a reference"
+    ],
+    ["a",
+      { "href" : "http://reference.com?key=value" },
+      "link using a reference2"
+    ],
+    "."
+  ]
+]
