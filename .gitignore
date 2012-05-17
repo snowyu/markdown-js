@@ -13,3 +13,5 @@
 .DS_Store
 .svn
 .sass-cache
+.*.swp
+/node_modules/

@@ -43,5 +43,14 @@
   "main" : "./lib/index.js",
   "bin": {
     "md2html": "./bin/md2html.js"
+  },
+  "dependencies": {
+    "nopt": "1"
+  },
+  "devDependencies": {
+    "tap": "0"
+  },
+  "scripts": {
+    "test": "tap test/*.t.js"
   }
 }
